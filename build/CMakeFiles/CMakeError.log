@@ -1,0 +1,84 @@
+Determining if the Q_WS_X11 exist failed with the following output:
+Change Dir: /Users/clement/work/github/xrocks/liuflow/build/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/make "cmTryCompileExec/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+/usr/local/Cellar/cmake/2.8.6/bin/cmake -E cmake_progress_report /Users/clement/work/github/xrocks/liuflow/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec.dir/CheckSymbolExists.cxx.o
+/usr/bin/c++    -fexceptions  -Wall -Wno-unused-function -Wno-unused-function   -I/usr/local/Cellar/qt/4.7.3/include -F/usr/local/Cellar/qt/4.7.3/lib    -o CMakeFiles/cmTryCompileExec.dir/CheckSymbolExists.cxx.o -c /Users/clement/work/github/xrocks/liuflow/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx
+In file included from /Users/clement/work/github/xrocks/liuflow/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:2:
+/usr/local/Cellar/qt/4.7.3/lib/QtCore.framework/Headers/qglobal.h:320:6: warning: #warning "This version of Mac OS X is unsupported"
+/Users/clement/work/github/xrocks/liuflow/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx: In function ‘int main()’:
+/Users/clement/work/github/xrocks/liuflow/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:8: error: ‘Q_WS_X11’ was not declared in this scope
+make[1]: *** [CMakeFiles/cmTryCompileExec.dir/CheckSymbolExists.cxx.o] Error 1
+make: *** [cmTryCompileExec/fast] Error 2
+
+File /Users/clement/work/github/xrocks/liuflow/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:
+/* */
+#include <QtCore/qglobal.h>
+
+void cmakeRequireSymbol(int dummy,...){(void)dummy;}
+int main()
+{
+#ifndef Q_WS_X11
+  cmakeRequireSymbol(0,&Q_WS_X11);
+#endif
+  return 0;
+}
+
+Determining if the Q_WS_WIN exist failed with the following output:
+Change Dir: /Users/clement/work/github/xrocks/liuflow/build/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/make "cmTryCompileExec/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+/usr/local/Cellar/cmake/2.8.6/bin/cmake -E cmake_progress_report /Users/clement/work/github/xrocks/liuflow/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec.dir/CheckSymbolExists.cxx.o
+/usr/bin/c++    -fexceptions  -Wall -Wno-unused-function -Wno-unused-function   -I/usr/local/Cellar/qt/4.7.3/include -F/usr/local/Cellar/qt/4.7.3/lib    -o CMakeFiles/cmTryCompileExec.dir/CheckSymbolExists.cxx.o -c /Users/clement/work/github/xrocks/liuflow/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx
+In file included from /Users/clement/work/github/xrocks/liuflow/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:2:
+/usr/local/Cellar/qt/4.7.3/lib/QtCore.framework/Headers/qglobal.h:320:6: warning: #warning "This version of Mac OS X is unsupported"
+/Users/clement/work/github/xrocks/liuflow/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx: In function ‘int main()’:
+/Users/clement/work/github/xrocks/liuflow/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:8: error: ‘Q_WS_WIN’ was not declared in this scope
+make[1]: *** [CMakeFiles/cmTryCompileExec.dir/CheckSymbolExists.cxx.o] Error 1
+make: *** [cmTryCompileExec/fast] Error 2
+
+File /Users/clement/work/github/xrocks/liuflow/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:
+/* */
+#include <QtCore/qglobal.h>
+
+void cmakeRequireSymbol(int dummy,...){(void)dummy;}
+int main()
+{
+#ifndef Q_WS_WIN
+  cmakeRequireSymbol(0,&Q_WS_WIN);
+#endif
+  return 0;
+}
+
+Determining if the Q_WS_QWS exist failed with the following output:
+Change Dir: /Users/clement/work/github/xrocks/liuflow/build/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/make "cmTryCompileExec/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+/usr/local/Cellar/cmake/2.8.6/bin/cmake -E cmake_progress_report /Users/clement/work/github/xrocks/liuflow/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec.dir/CheckSymbolExists.cxx.o
+/usr/bin/c++    -fexceptions  -Wall -Wno-unused-function -Wno-unused-function   -I/usr/local/Cellar/qt/4.7.3/include -F/usr/local/Cellar/qt/4.7.3/lib    -o CMakeFiles/cmTryCompileExec.dir/CheckSymbolExists.cxx.o -c /Users/clement/work/github/xrocks/liuflow/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx
+In file included from /Users/clement/work/github/xrocks/liuflow/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:2:
+/usr/local/Cellar/qt/4.7.3/lib/QtCore.framework/Headers/qglobal.h:320:6: warning: #warning "This version of Mac OS X is unsupported"
+/Users/clement/work/github/xrocks/liuflow/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx: In function ‘int main()’:
+/Users/clement/work/github/xrocks/liuflow/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:8: error: ‘Q_WS_QWS’ was not declared in this scope
+make[1]: *** [CMakeFiles/cmTryCompileExec.dir/CheckSymbolExists.cxx.o] Error 1
+make: *** [cmTryCompileExec/fast] Error 2
+
+File /Users/clement/work/github/xrocks/liuflow/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:
+/* */
+#include <QtCore/qglobal.h>
+
+void cmakeRequireSymbol(int dummy,...){(void)dummy;}
+int main()
+{
+#ifndef Q_WS_QWS
+  cmakeRequireSymbol(0,&Q_WS_QWS);
+#endif
+  return 0;
+}
+
