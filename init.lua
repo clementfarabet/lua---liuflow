@@ -38,8 +38,8 @@ of channels (colors).]]
 --
 -- @release 2010 Clement Farabet
 ------------------------------------------------------------
-module('liuflow', package.seeall)
-   
+liuflow = {}
+
 ------------------------------------------------------------
 -- Computes the optical flow of a pair of images, and returns
 -- the norm and the direction fields, plus a warped version of the second
@@ -65,7 +65,7 @@ module('liuflow', package.seeall)
 -- @param nInnerFPIterations  number of inner fixed-point iterations [default = 1] [type = number]
 -- @param nCGIterations  number of CG iterations [default = 20] [type = number]
 ------------------------------------------------------------
-infer = function(...)
+liuflow.infer = function(...)
            -- check args
            local args, pair, img1, img2, alpha, ratio, minWidth, 
            nOuterFPIterations, nInnerFPIterations, nCGIterations = dok.unpack(
@@ -100,15 +100,15 @@ infer = function(...)
                                                          nOuterFPIterations, nInnerFPIterations,
                                                          nCGIterations)
 
-	   local flow_norm  = computeNorm(flow_x,flow_y)
-	   local flow_angle = computeAngle(flow_x,flow_y)
+	   local flow_norm  = liuflow.computeNorm(flow_x,flow_y)
+	   local flow_angle = liuflow.computeAngle(flow_x,flow_y)
 
            -- return results
            return flow_norm, flow_angle, warp, flow_x, flow_y
         end
 
 -- warper
-warp = function(...)
+liuflow.warp = function(...)
           local args, inp, vx, vy = dok.unpack(
              {...},
              'opticalFlow.warp', 
@@ -130,7 +130,7 @@ warp = function(...)
 --
 -- @see                  opticalFlow.infer
 ------------------------------------------------------------
-testme = function()
+liuflow.testme = function()
             require 'image'
 
             local img1 = image.load(paths.concat(paths.install_lua_path, 'liuflow/img1.jpg')):float()
@@ -138,18 +138,22 @@ testme = function()
             local img1s = image.scale(img1,img1:size(3)/2,img1:size(2)/2)
             local img2s = image.scale(img2,img1:size(3)/2,img1:size(2)/2)
             
-            local resn,resa,warp,resx,resy = infer{pair={img1s,img2s},
-                                                   alpha=0.005,ratio=0.6,
-                                                   minWidth=50,nOuterFPIterations=6,
-                                                   nInnerFPIterations=1,
-                                                   nCGIterations=40}
-            
+            print('computing optical on ' .. img1s:size(3) .. 'x' .. img1s:size(2) .. ' image')
+
+            local resn,resa,warp,resx,resy = liuflow.infer{ pair={img1s,img2s},
+                                                            alpha=0.005,
+                                                            ratio=0.6,
+                                                            minWidth=50,
+                                                            nOuterFPIterations=6,
+                                                            nInnerFPIterations=1,
+                                                            nCGIterations=40 }
+
             local resn_q = resn:clone():div(resn:max()):mul(6):floor():div(8)
             local resa_q = resa:clone():div(360/16):floor():mul(360/16)
             
-            image.display{image={img1s, field2rgb(resn,resa), 
+            image.display{image={img1s, liuflow.field2rgb(resn,resa), 
                                  img1s, (img2s-img1s):abs(),
-                                 img2s, field2rgb(resn_q,resa_q), 
+                                 img2s, liuflow.field2rgb(resn_q,resa_q), 
                                  warp, (warp-img1s):abs()}, 
                               zoom=1,
                               min=0, max=1,
@@ -172,7 +176,7 @@ testme = function()
 -- @param flow_x  flow field (x), (WxH) [required] [type = torch.Tensor]
 -- @param flow_y  flow field (y), (WxH) [required] [type = torch.Tensor]
 ------------------------------------------------------------
-computeNorm = function(...)
+liuflow.computeNorm = function(...)
                  -- check args
                  local args, flow_x, flow_y = dok.unpack(
                     {...},
@@ -195,7 +199,7 @@ computeNorm = function(...)
 -- @param flow_x  flow field (x), (WxH) [required] [type = torch.Tensor]
 -- @param flow_y  flow field (y), (WxH) [required] [type = torch.Tensor]
 ------------------------------------------------------------
-computeAngle = function(...)
+liuflow.computeAngle = function(...)
                   -- check args
                   local args, flow_x, flow_y = dok.unpack(
                      {...},
@@ -234,7 +238,7 @@ computeAngle = function(...)
 -- @param max  if not provided, norm:max() is used [type = number]
 -- @param legend  prints a legend on the image [type = boolean]
 ------------------------------------------------------------
-field2rgb = function (...)
+liuflow.field2rgb = function (...)
                -- check args
                local args, norm, angle, max, legend = dok.unpack(
                   {...},
@@ -287,7 +291,7 @@ field2rgb = function (...)
 -- @param x  flow field (x), (WxH) [required] [type = torch.Tensor]
 -- @param y  flow field (y), (WxH) [required] [type = torch.Tensor]
 ------------------------------------------------------------
-xy2rgb = function (...)
+liuflow.xy2rgb = function (...)
             -- check args
             local args, x, y, max = dok.unpack(
                {...},
@@ -299,7 +303,7 @@ xy2rgb = function (...)
                {arg='max', type='number', help='if not provided, norm:max() is used'}
             )
             
-            local norm = computeNorm(x,y)
-            local angle = computeAngle(x,y)
-            return field2rgb(norm,angle,max)
+            local norm = liuflow.computeNorm(x,y)
+            local angle = liuflow.computeAngle(x,y)
+            return liuflow.field2rgb(norm,angle,max)
          end
