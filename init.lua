@@ -24,7 +24,7 @@ The flow field is computed using CG, as described in
 by C. Liu (Doctoral Thesis).
 More at http://people.csail.mit.edu/celiu/OpticalFlow/
 
-The input images must be a WxHxN tensor, where N is the number
+The input images must be a NxHxW tensor, where N is the number
 of channels (colors).]]
 
 ------------------------------------------------------------
@@ -50,14 +50,14 @@ module('liuflow', package.seeall)
 -- by C. Liu (Doctoral Thesis).
 -- More at http://people.csail.mit.edu/celiu/OpticalFlow/
 --
--- The input images must be a WxHxN tensor, where N is the number
+-- The input images must be a NxHxW tensor, where N is the number
 -- of channels (colors).
 --
 -- @usage opticalFlow.infer() -- prints online help
 --
--- @param pair  a pair of images (2 WxHxN tensor) [type = table]
-   -- @param image1  the first image (WxHxN tensor) [type = torch.Tensor]
--- @param image2  the second image (WxHxN tensor) [type = torch.Tensor]
+-- @param pair  a pair of images (2 NxHxW tensor) [type = table]
+   -- @param image1  the first image (NxHxW tensor) [type = torch.Tensor]
+-- @param image2  the second image (NxHxW tensor) [type = torch.Tensor]
 -- @param alpha  regularization weight [default = 0.01] [type = number]
 -- @param ratio  downsample ratio [default = 0.75] [type = number]
 -- @param minWidth  width of the coarsest level [default = 30] [type = number]
@@ -72,9 +72,9 @@ infer = function(...)
               {...},
               'opticalFlow.infer',
               infer_help_desc,
-              {arg='pair', type='table', help='a pair of images (2 WxHxN tensor)'},
-              {arg='image1', type='torch.Tensor', help='the first image (WxHxN tensor)'},
-              {arg='image2', type='torch.Tensor', help='the second image (WxHxN tensor)'},
+              {arg='pair', type='table', help='a pair of images (2 NxHxW tensor)'},
+              {arg='image1', type='torch.Tensor', help='the first image (NxHxW tensor)'},
+              {arg='image2', type='torch.Tensor', help='the second image (NxHxW tensor)'},
               {arg='alpha', type='number', help='regularization weight', default=0.01},
               {arg='ratio', type='number', help='downsample ratio', default=0.75},
               {arg='minWidth', type='number', help='width of the coarsest level', default=30},
@@ -91,7 +91,7 @@ infer = function(...)
 
            -- check dims
            if img1:nDimension() ~= 3 then
-              error('image should be a WxHxN tensor')
+              error('image should be a NxHxW tensor')
            end
 
            -- compute flow
@@ -115,12 +115,12 @@ warp = function(...)
              'warps an image according to a flow field:\n'
                 ..'if flow was computed from img1->img2, then warp(img2,vx,vy) will compute\n'
                 ..'a reconstruction of img1',
-             {arg='image', type='torch.Tensor', help='input image (WxHxN tensor)', req=true},
+             {arg='image', type='torch.Tensor', help='input image (NxHxW tensor)', req=true},
              {arg='flow_x', type='torch.Tensor', help='x component of flow field', req=true},
              {arg='flow_y', type='torch.Tensor', help='y component of flow field', req=true}
           )
           if inp:nDimension() ~= 3 then
-             xerror('image should be a WxHxN tensor',nil,args.usage)
+             xerror('image should be a NxHxW tensor',nil,args.usage)
           end
           return libliuflow.warp(inp, vx, vy)
        end
