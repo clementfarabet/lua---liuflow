@@ -153,6 +153,7 @@ testme = function()
                                  warp, (warp-img1s):abs()}, 
                               zoom=1,
                               min=0, max=1,
+                              nrow=4,
                               legends={'input 1', 'flow field', 'input 1', 
                                        'input 1 - input 2',
                                        'input 2', 'quantized flow field', 
