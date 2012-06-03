@@ -1,5 +1,0 @@
-/usr/local/lib/torch/libliuflow.dylib
-/usr/local/share/torch/lua/liuflow/init.lua
-/usr/local/share/torch/lua/liuflow/img1.jpg
-/usr/local/share/torch/lua/liuflow/img2.jpg
-/usr/local/share/torch/lua/liuflow/legend.png
