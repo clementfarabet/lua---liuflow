@@ -281,9 +281,8 @@ liuflow.field2rgb = function (...)
                if legend then
                   _legend_ = _legend_
                      or image.load(paths.concat(paths.install_lua_path, 'liuflow/legend.png'))
-                  legend = torch.Tensor(3, hsl:size(2)/8, hsl:size(2)/8)
-                  image.scale(_legend_, legend, 'bilinear')
-                  rgb:narrow(2,1,legend:size(2)):narrow(3,hsl:size(2)-legend:size(2)+1,legend:size(2)):copy(legend)
+                  local legend = image.scale(_legend_, hsl:size(2)/8, hsl:size(2)/8)
+                  rgb:narrow(3,1,legend:size(2)):narrow(2,hsl:size(2)-legend:size(2)+1,legend:size(2)):copy(legend)
                end
 
                -- done
