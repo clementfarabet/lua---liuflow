@@ -280,7 +280,7 @@ liuflow.field2rgb = function (...)
                -- legend
                if legend then
                   _legend_ = _legend_
-                     or image.load(paths.concat(paths.install_lua_path, 'opticalFlow/legend.png'),3)
+                     or image.load(paths.concat(paths.install_lua_path, 'liuflow/legend.png'),3)
                   legend = torch.Tensor(hsl:size(2)/8, hsl:size(2)/8, 3)
                   image.scale(_legend_, legend, 'bilinear')
                   rgb:narrow(1,1,legend:size(2)):narrow(2,hsl:size(2)-legend:size(2)+1,legend:size(2)):copy(legend)
