@@ -100,8 +100,8 @@ liuflow.infer = function(...)
                                                          nOuterFPIterations, nInnerFPIterations,
                                                          nCGIterations)
 
-	   local flow_norm  = liuflow.computeNorm(flow_x,flow_y)
-	   local flow_angle = liuflow.computeAngle(flow_x,flow_y)
+   	     local flow_norm  = liuflow.computeNorm(flow_x,flow_y)
+	        local flow_angle = liuflow.computeAngle(flow_x,flow_y)
 
            -- return results
            return flow_norm, flow_angle, warp, flow_x, flow_y
