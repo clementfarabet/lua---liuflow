@@ -256,8 +256,16 @@ liuflow.field2rgb = function (...)
                if max then saturate = true end
                max = math.max(max or norm:max(), 1e-2)
 
+               -- redim?
+               if norm:nDimension() == 3 then
+                  norm = norm[1]
+               end
+               if angle:nDimension() == 3 then
+                  angle = angle[1]
+               end
+
                -- merge them into an HSL image
-               local hsl = torch.Tensor(3, norm:size(2), norm:size(3))
+               local hsl = torch.Tensor(3, norm:size(1), norm:size(2))
                -- hue = angle:
                hsl:select(1,1):copy(angle):div(360)
                -- saturation = normalized intensity:
